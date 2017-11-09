@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "icrosoft yahei", serif;
+        }
+
+        li {
+            list-style-type: none;
+        }
+         #box{
+             position:relative;
+             width: 480px;
+             height: 360px;
+             color:#fff;
+             margin:100px auto;
+
+         }
+        .img{
+            overflow:hidden;
+            width:100%;
+            height:100%;
+        }
+        .img img {
+            /*position:absolute;*/
+            /*top:0;*/
+            /*left:0;*/
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .sp1{
+             position:absolute;
+             top:-50px;
+             left:0;
+             text-align:center;
+             width:100px;
+             height: 50px;
+             line-height:50px;
+             background-color: orange;
+             border-radius:5px;
+             cursor:pointer;
+         }
+        .sp2{
+            position:absolute;
+            top:-50px;
+            left:100px;
+            margin-left:2px;
+            text-align:center;
+            width:100px;
+            height: 50px;
+            line-height:50px;
+            background-color: black;
+            border-radius:5px;
+            cursor:pointer;
+        }
+        .top{
+            overflow:hidden;
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            line-height:30px;
+            text-align:center;
+            background-color: darkgreen;
+        }
+        .bottom{
+            overflow:hidden;
+            position:absolute;
+            top: 330px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            line-height:30px;
+            text-align:center;
+
+            background-color: darkgreen;
+        }
+        .prev{
+            position:absolute;
+            top:170px;
+            left:0;
+            width: 60px;
+            height: 20px;
+            line-height:20px;
+            text-align:center;
+            text-decoration:none;
+            color:#fff;
+            background-color: darkgreen;
+        }
+        .next{
+            position:absolute;
+            top:170px;
+            right:0;
+            width: 60px;
+            height: 20px;
+            line-height:20px;
+            text-align:center;
+            text-decoration:none;
+            color:#fff;
+            background-color: darkgreen;
+        }
+
+
+    </style>
+</head>
+<body>
+        <div id="box">
+            <div class="img">
+                <img src="images/1.jpg" alt="">
+                <img src="images/2.jpg" alt="">
+                <img src="images/3.jpg" alt="">
+                <img src="images/4.jpg" alt="">
+                <img src="images/5.jpg" alt="">
+                <img src="images/6.jpg" alt="">
+            </div>
+            <span class="sp1">循环切换</span>
+            <span class="sp2">单边切换</span>
+            <div class="top">
+                <p>1/6</p>
+                <p>2/6</p>
+                <p>3/6</p>
+                <p>4/6</p>
+                <p>5/6</p>
+                <p>6/6</p>
+            </div>
+            <div class="bottom">
+                <p>第一张图片</p>
+                <p>第二张图片</p>
+                <p>第三张图片</p>
+                <p>第四张图片</p>
+                <p>第五张图片</p>
+                <p>第六张图片</p>
+
+            </div>
+            <a href="" class="prev">上一张</a>
+            <a href="" class="next">下一张</a>
+        </div>
+        <script>
+            var oSpan = document.querySelector("#box span");
+            var oImg = getElementsByTagName("img");
+            var oPrev = getElementsByTagName("a")[0];
+            var oNext = getElementsByTagName("a")[1];
+            var oP = getElementsByTagName("p");
+
+            oSpan[0].onclick = function(){
+                this.style.backgroundColor = "orange";
+                oSpan[1].style.backgroundColor = "black";
+            }
+            oSpan[1].onclick = function(){
+                this.style.backgroundColor = "orange";
+                oSpan[0].style.backgroundColor = "black";
+            }
+
+
+//            oPrev.onclick = function () {
+//                if(oSpan[0]){}
+//                  else if (oImg[0]){
+//                    oP[0].style.display = none;
+//                    oP[1].style.display = block;
+//                    oP[2].style.display = none;
+//                    oP[3].style.display = none;
+//                    oP[4].style.display = none;
+//                    oP[5].style.display = none;
+//                    oP[6].style.display = none;
+//                    oP[7].style.display = block;
+//                    oP[8].style.display = none;
+//                    oP[9].style.display = none;
+//                    oP[10].style.display = none;
+//                    oP[11].style.display = none;
+//                  }
+//
+//
+//            }
+
+        </script>
+
+</body>
+</html>
