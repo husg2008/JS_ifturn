@@ -21,12 +21,12 @@
              margin:100px auto;
 
          }
-        .img{
+        .pic{
             overflow:hidden;
             width:100%;
             height:100%;
         }
-        .img img {
+        .pic img {
             /*position:absolute;*/
             /*top:0;*/
             /*left:0;*/
@@ -35,7 +35,7 @@
             height: 100%;
         }
 
-        .sp1{
+        #title{
              position:absolute;
              top:-50px;
              left:0;
@@ -47,20 +47,20 @@
              border-radius:5px;
              cursor:pointer;
          }
-        .sp2{
-            position:absolute;
-            top:-50px;
-            left:100px;
-            margin-left:2px;
-            text-align:center;
-            width:100px;
-            height: 50px;
-            line-height:50px;
-            background-color: black;
-            border-radius:5px;
-            cursor:pointer;
-        }
-        .top{
+        /*.btn2{*/
+            /*position:absolute;*/
+            /*top:-50px;*/
+            /*left:100px;*/
+            /*margin-left:2px;*/
+            /*text-align:center;*/
+            /*width:100px;*/
+            /*height: 50px;*/
+            /*line-height:50px;*/
+            /*background-color: black;*/
+            /*border-radius:5px;*/
+            /*cursor:pointer;*/
+        /*}*/
+        .topinfo{
             overflow:hidden;
             position:absolute;
             top: 0;
@@ -71,7 +71,7 @@
             text-align:center;
             background-color: darkgreen;
         }
-        .bottom{
+        .bottominfo{
             overflow:hidden;
             position:absolute;
             top: 330px;
@@ -113,72 +113,48 @@
 </head>
 <body>
         <div id="box">
-            <div class="img">
-                <img src="images/1.jpg" alt="">
-                <img src="images/2.jpg" alt="">
-                <img src="images/3.jpg" alt="">
-                <img src="images/4.jpg" alt="">
-                <img src="images/5.jpg" alt="">
-                <img src="images/6.jpg" alt="">
+            <div id="title">
+                <p>循环切换</p>
+                <p>单边切换</p>
             </div>
-            <span class="sp1">循环切换</span>
-            <span class="sp2">单边切换</span>
-            <div class="top">
-                <p>1/6</p>
-                <p>2/6</p>
-                <p>3/6</p>
-                <p>4/6</p>
-                <p>5/6</p>
-                <p>6/6</p>
-            </div>
-            <div class="bottom">
-                <p>第一张图片</p>
-                <p>第二张图片</p>
-                <p>第三张图片</p>
-                <p>第四张图片</p>
-                <p>第五张图片</p>
-                <p>第六张图片</p>
+            <div id="wrap">
+                <div class="pic">
+                    <img src="images/1.jpg" alt="">
+                    <img src="images/2.jpg" alt="">
+                    <img src="images/3.jpg" alt="">
+                    <img src="images/4.jpg" alt="">
+                    <img src="images/5.jpg" alt="">
+                    <img src="images/6.jpg" alt="">
+                </div>
 
+                <div class="topinfo">
+                    <p><span>1</span>/6</p>
+                </div>
+                <div class="bottominfo">
+                    <p>第<span>一</span>张图片</p>
+                </div>
+                    <a href="" class="prev">上一张</a>
+                    <a href="" class="next">下一张</a>
             </div>
-            <a href="" class="prev">上一张</a>
-            <a href="" class="next">下一张</a>
         </div>
         <script>
-            var oSpan = document.querySelector("#box span");
-            var oImg = getElementsByTagName("img");
-            var oPrev = getElementsByTagName("a")[0];
-            var oNext = getElementsByTagName("a")[1];
-            var oP = getElementsByTagName("p");
+//            var oTitle = document.querySeclectorAll("#title .btn");
+//            var oImg = getElementsByTagName("img");
+//            var oPrev = getElementsByTagName("a")[0];
+//            var oNext = getElementsByTagName("a")[1];
+//            var oP = getElementsByTagName("p");
 
-            oSpan[0].onclick = function(){
-                this.style.backgroundColor = "orange";
-                oSpan[1].style.backgroundColor = "black";
-            }
-            oSpan[1].onclick = function(){
-                this.style.backgroundColor = "orange";
-                oSpan[0].style.backgroundColor = "black";
-            }
-
-
-//            oPrev.onclick = function () {
-//                if(oSpan[0]){}
-//                  else if (oImg[0]){
-//                    oP[0].style.display = none;
-//                    oP[1].style.display = block;
-//                    oP[2].style.display = none;
-//                    oP[3].style.display = none;
-//                    oP[4].style.display = none;
-//                    oP[5].style.display = none;
-//                    oP[6].style.display = none;
-//                    oP[7].style.display = block;
-//                    oP[8].style.display = none;
-//                    oP[9].style.display = none;
-//                    oP[10].style.display = none;
-//                    oP[11].style.display = none;
-//                  }
-//
-//
+//            oSpan[0].onclick = function(){
+//                this.style.backgroundColor = "orange";
+//                oSpan[1].style.backgroundColor = "black";
 //            }
+//            oSpan[1].onclick = function(){
+//                this.style.backgroundColor = "orange";
+//                oSpan[0].style.backgroundColor = "black";
+//            }
+
+
+
 
         </script>
 
