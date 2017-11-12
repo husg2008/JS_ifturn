@@ -14,52 +14,60 @@
             list-style-type: none;
         }
          #box{
+             position:relative;
+             width: 480px;
+             height: 410px;
+             margin:100px auto;
+
          }
-        /*#title{0ch*/
-            /*float:left;*/
-            /*margin*/
-            /*text-align:center;*/
-            /*width:100px;*/
-            /*height: 50px;*/
-            /*line-height:50px;*/
-            /*background-color: orange;*/
-            /*border-radius:5px;*/
-            /*cursor:pointer;*/
-        /*}*/
+        #box::after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        #title{
+            float:left;
+            text-align:center;
+            width:200px;
+            height: 50px;
+            line-height:50px;
+            color:#fff;
+            cursor:pointer;
+        }
+        #title .orange{
+            background-color: orange;
+        }
+        #title p{
+            float:left;
+            width:95px;
+            height:100%;
+            margin-right:1px;
+            background-color: #000;
+            border-radius:5px;
+        }
+
         #wrap {
             width: 480px;
             height: 360px;
         }
-        .pic{
+        #wrap .pic{
             overflow:hidden;
             width:100%;
             height:100%;
         }
-        .pic img {
-            /*position:absolute;*/
-            /*top:0;*/
-            /*left:0;*/
+        #wrap .pic img {
+            display:none;
             float:left;
             width: 100%;
             height: 100%;
         }
-        /*.btn2{*/
-            /*position:absolute;*/
-            /*top:-50px;*/
-            /*left:100px;*/
-            /*margin-left:2px;*/
-            /*text-align:center;*/
-            /*width:100px;*/
-            /*height: 50px;*/
-            /*line-height:50px;*/
-            /*background-color: black;*/
-            /*border-radius:5px;*/
-            /*cursor:pointer;*/
-        /*}*/
+        #wrap .pic img.on{
+            display:block;
+        }
         .topinfo{
             overflow:hidden;
             position:absolute;
-            top: 0;
+            top: 50px;
             left: 0;
             width: 100%;
             height: 30px;
@@ -70,18 +78,17 @@
         .bottominfo{
             overflow:hidden;
             position:absolute;
-            top: 330px;
+            top: 380px;
             left: 0;
             width: 100%;
             height: 30px;
             line-height:30px;
             text-align:center;
-
             background-color: darkgreen;
         }
-        .prev{
+       .turn .prev{
             position:absolute;
-            top:170px;
+            top:220px;
             left:0;
             width: 60px;
             height: 20px;
@@ -91,9 +98,9 @@
             color:#fff;
             background-color: darkgreen;
         }
-        .next{
+        .turn .next{
             position:absolute;
-            top:170px;
+            top:220px;
             right:0;
             width: 60px;
             height: 20px;
@@ -103,51 +110,92 @@
             color:#fff;
             background-color: darkgreen;
         }
-
-
     </style>
 </head>
 <body>
         <div id="box">
             <div id="title">
-                <p>循环切换</p>
+                <p class="orange">循环切换</p>
                 <p>单边切换</p>
             </div>
             <div id="wrap">
                 <div class="pic">
-                    <img src="images/1.jpg" alt="">
-                    <img src="images/2.jpg" alt="">
+                    <img class="on" src="images/1.jpg" alt="">
+                    <img  src="images/2.jpg" alt="">
                     <img src="images/3.jpg" alt="">
                     <img src="images/4.jpg" alt="">
                     <img src="images/5.jpg" alt="">
                     <img src="images/6.jpg" alt="">
                 </div>
-
-                <div class="topinfo">
-                    <p><span>1</span>/6</p>
+                <div class="info">
+                    <p class="topinfo"><span>1</span>/6</p>
+                    <p class="bottominfo">第<span>一</span>张图片</p>
                 </div>
-                <div class="bottominfo">
-                    <p>第<span>一</span>张图片</p>
+                <div class="turn">
+                    <p class="prev">上一张</p>
+                    <p class="next">下一张</p>
                 </div>
-                    <a href="" class="prev">上一张</a>
-                    <a href="" class="next">下一张</a>
             </div>
         </div>
         <script>
-//            var oTitle = document.querySeclectorAll("#title .btn");
-//            var oImg = getElementsByTagName("img");
-//            var oPrev = getElementsByTagName("a")[0];
-//            var oNext = getElementsByTagName("a")[1];
-//            var oP = getElementsByTagName("p");
+            var oTitle = document.querySelectorAll("#title p"),
+                oWrap = document.querySelector("#box #wrap"),
+                oP = oWrap.querySelectorAll(".turn p"),
+                oPic = oWrap.querySelectorAll(".pic img"),
+                oInfo = oWrap.querySelectorAll(".info p span"),
+                xx = 0,
+                flag = true,
+                length = oPic.length,
+                arr = ["一","二","三","四","五","六"];
+            oTitle[0].onclick = function(){
+                oTitle[0].className = "orange";
+                oTitle[1].className = "";
+                flag = true;
+            };
+            oTitle[1].onclick = function(){
+                oTitle[1].className = "orange";
+                oTitle[0].className = "";
+                flag = false;
 
-//            oSpan[0].onclick = function(){
-//                this.style.backgroundColor = "orange";
-//                oSpan[1].style.backgroundColor = "black";
-//            }
-//            oSpan[1].onclick = function(){
-//                this.style.backgroundColor = "orange";
-//                oSpan[0].style.backgroundColor = "black";
-//            }
+            };
+            oP[1].onclick = function () {
+                oPic[xx].className = "";//去掉当前图片的类名
+                xx++; //序号自动加1
+
+                if(xx > length-1){
+                    //判断当前处于哪种循环
+                    if(flag){
+                        xx = 0;//回归到初始值
+                    }else{
+                        alert("已经是最后一张图片了！");
+                        xx = length-1;
+                    }
+
+                }
+                oPic[xx].className = "on";  //给当前图片添加类名
+                oInfo[0].innerHTML = xx+1;
+                oInfo[1].innerHTML = arr[xx];
+            };
+            oP[0].onclick = function () {
+                oPic[xx].className = "";//去掉当前图片的类名
+                xx--; //序号自动加1
+                if(xx < 0){
+
+                    //判断是哪种切换方式
+                    if(flag){
+                        xx = length-1;//回归到初始值
+                    }else{
+                        alert("已经是第一张了！");
+                        xx = 0;
+                    }
+                }
+                oPic[xx].className = "on";  //给当前图片添加类名
+                oInfo[0].innerHTML = xx+1;
+                oInfo[1].innerHTML = arr[xx];
+
+            }
+
+
 
 
 
