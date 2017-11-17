@@ -159,18 +159,29 @@
 
             };
             oP[1].onclick = function () {
-                oPic[xx].className = "";//去掉当前图片的类名
-                xx++; //序号自动加1
 
+
+//                if(xx === length-1 & !flag){
+//                    alert("已经是最后一张图片了！");
+//                }
+//                else{
+//                    oPic[xx].className = "";//去掉当前图片的类名
+//                    xx++; //序号自动加1
+//                    if(flag){xx = 0;}//回归到初始值
+//                    oPic[xx].className = "on";  //给当前图片添加类名
+//                    oInfo[0].innerHTML = xx+1;
+//                    oInfo[1].innerHTML = arr[xx];
+//                }
+                oPic[xx].className = "";//去掉当前图片的类名
+                xx++;
                 if(xx > length-1){
-                    //判断当前处于哪种循环
                     if(flag){
-                        xx = 0;//回归到初始值
+                        xx = 0;
+
                     }else{
                         alert("已经是最后一张图片了！");
                         xx = length-1;
                     }
-
                 }
                 oPic[xx].className = "on";  //给当前图片添加类名
                 oInfo[0].innerHTML = xx+1;
